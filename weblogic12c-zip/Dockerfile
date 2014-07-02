@@ -19,10 +19,10 @@ RUN chmod a+r /u01
 RUN useradd -b /u01 -m -s /bin/bash oracle
 RUN echo oracle:welcome1 | chpasswd
 
-ADD create-wls-domain.py /u01/create-wls-domain.py
+ADD container-scripts/create-wls-domain.py /u01/create-wls-domain.py
 ADD wls1213_dev.zip /u01/wls1213_dev.zip
-ADD add-machine.py /u01/oracle/add-machine.py
-ADD createMachine.sh /u01/oracle/createMachine.sh
+ADD container-scripts/add-machine.py /u01/oracle/add-machine.py
+ADD container-scripts/createMachine.sh /u01/oracle/createMachine.sh
 RUN chown oracle:oracle -R /u01
 
 WORKDIR /u01

@@ -1,12 +1,17 @@
 #!/bin/sh
-if [ -e "weblogic.cid" ]
+if [ ! -e tmp ]
 then
-  docker kill `cat weblogic.cid` > /dev/null 2>&1
+  mkdir tmp
+fi
+
+if [ -e "tmp/weblogic.cid" ]
+then
+  docker kill `cat tmp/weblogic.cid` > /dev/null 2>&1
   if [ $? -ne 0 ]
   then
-    rm -f weblogic.cid
+    rm -f tmp/weblogic.cid
   else
-    docker rm `cat weblogic.cid`  > /dev/null 2>&1 && rm weblogic.cid
+    docker rm `cat tmp/weblogic.cid`  > /dev/null 2>&1 && rm tmp/weblogic.cid
   fi
 fi
 
@@ -15,7 +20,7 @@ then
   ATTACH_DEFAULT_PORT="-p 7001:7001"
 fi
 
-docker run -d $ATTACH_DEFAULT_PORT --cidfile weblogic.cid --name wls12cdev oracle/weblogic12c_dev /u01/oracle/wls12130/user_projects/domains/base_domain/startWebLogic.sh # > /dev/null 2>&1
+docker run -d $ATTACH_DEFAULT_PORT --cidfile tmp/weblogic.cid --name wls12cdev oracle/weblogic12c_dev /u01/oracle/wls12130/user_projects/domains/base_domain/startWebLogic.sh # > /dev/null 2>&1
 
 if [ -n "${ATTACH_DEFAULT_PORT}" ]
 then

@@ -1,10 +1,18 @@
 #!/bin/sh
+if [ ! -e tmp/weblogic.cid ]
+then
+  echo "First start WebLogic Admin Server by calling 'dockWebLogic.sh'"
+  exit
+fi
+
 TIMESTAMP=`date +%s`
 CONTAINER_NAME=nodemanager${TIMESTAMP}
 CID_FILE=${CONTAINER_NAME}.cid
 
-docker run -d --name ${CONTAINER_NAME} -e DOCKER_CONTAINER_NAME=${CONTAINER_NAME} --cidfile $CID_FILE --link wls12cdev:wls12cdev oracle/weblogic12c_dev /u01/oracle/createMachine.sh
+docker run -d --name ${CONTAINER_NAME} -e DOCKER_CONTAINER_NAME=${CONTAINER_NAME} --cidfile $CID_FILE --link wls12cdev:wls12cdev oracle/weblogic12c_dev /u01/oracle/createMachine.sh > /dev/null 2>&1
 
 NMIP=$(docker inspect --format='{{.NetworkSettings.IPAddress}}' `cat $CID_FILE`)
 
-echo "New NodeManager started on IP Address: ${NMIP}. Hopefully this Machine was automatically added to 'base_domain'. If not, go to Admin Console and try to add it manually with this IP address."
+echo "New NodeManager [${CONTAINER_NAME}] started on IP Address: ${NMIP}."
+echo "Hopefully this Machine was automatically added to 'base_domain'."
+echo "If not, go to Admin Console and try to add it manually with this IP address."
