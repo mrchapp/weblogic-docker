@@ -7,7 +7,7 @@ fi
 
 TIMESTAMP=`date +%s`
 CONTAINER_NAME=nodemanager${TIMESTAMP}
-CID_FILE=${CONTAINER_NAME}.cid
+CID_FILE=tmp/${CONTAINER_NAME}.cid
 
 docker run -d --name ${CONTAINER_NAME} -e DOCKER_CONTAINER_NAME=${CONTAINER_NAME} --cidfile $CID_FILE --link wls12cdev:wls12cdev oracle/weblogic12c_dev /u01/oracle/createMachine.sh > /dev/null 2>&1
 
