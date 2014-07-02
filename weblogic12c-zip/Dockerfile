@@ -1,5 +1,5 @@
 #
-# Oracle Dockerfile for WebLogic 12.1.3 ZIP Distro
+# Dockerfile for WebLogic 12.1.3 ZIP Distro
 # 
 # Download wls1213_dev.zip from www.oracle.com/technetwork/middleware/weblogic/downloads/index.html
 # and put it in the same dir as this Dockerfile
