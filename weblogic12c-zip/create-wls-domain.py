@@ -135,11 +135,14 @@ assign('JDBCSystemResource', 'myDataSource', 'Target', 'AdminServer')
 #=======================================================================================
 
 setOption('OverwriteDomain', 'true')
+setOption('ServerStartMode','prod')
 
 cd('/')
 cd('NMProperties')
 set('ListenAddress','')
 set('NativeVersionEnabled', 'false')
+
+
 writeDomain('/u01/oracle/wls12130/user_projects/domains/base_domain')
 closeTemplate()
 

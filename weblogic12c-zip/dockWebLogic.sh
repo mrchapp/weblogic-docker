@@ -4,15 +4,26 @@ then
   docker kill `cat weblogic.cid` > /dev/null 2>&1
   if [ $? -ne 0 ]
   then
-    rm weblogic.cid
+    rm -f weblogic.cid
   else
-    docker rm `cat weblogic.cid` && rm weblogic.cid
+    docker rm `cat weblogic.cid`  > /dev/null 2>&1 && rm weblogic.cid
   fi
 fi
 
+if [ ""$1 = "-attach" ]
+then
+  ATTACH_DEFAULT_PORT="-p 7001:7001"
+fi
 
-docker run -d -p 7001:7001 -cidfile weblogic.cid --name wls12cdev oracle/weblogic12c_dev /u01/oracle/wls12130/user_projects/domains/base_domain/startWebLogic.sh > /dev/null 2>&1
+docker run -d $ATTACH_DEFAULT_PORT --cidfile weblogic.cid --name wls12cdev oracle/weblogic12c_dev /u01/oracle/wls12130/user_projects/domains/base_domain/startWebLogic.sh # > /dev/null 2>&1
 
-CIPA=$(docker inspect --format='{{.NetworkSettings.IPAddress}}' wls12cdev)
+if [ -n "${ATTACH_DEFAULT_PORT}" ]
+then
+  WLS_ADMIN_IP=127.0.0.1
+else
+  WLS_ADMIN_IP=$(docker inspect --format='{{.NetworkSettings.IPAddress}}' wls12cdev)
+fi
 
-echo "Open WebLogic Console at http://${CIPA}:7001/console"
+echo "WebLogic starting... "
+sleep 10
+echo "Open WebLogic Console at http://${WLS_ADMIN_IP}:7001/console"
