@@ -10,17 +10,17 @@ To build this Docker container for your own usage, first please download the Web
 
 1. Checkout the GitHub weblogic-docker repository
 
-        $ git checkout git@github.com:weblogic-community/weblogic-docker.git
+        git checkout git@github.com:weblogic-community/weblogic-docker.git
 
 2. Go to the **weblogic12c-zip** folder
 
-        $ cd weblogic-docker/weblogic12c-zip
+        cd weblogic-docker/weblogic12c-zip
 
 3. Drop the downloaded WebLogic 12c ZIP Distribution file **wls1213_dev.zip** in this folder
 
 4. Execute the build script
 
-        $ build.sh
+        build.sh
 
 ## Booting up Oracle WebLogic 12c on Docker
 
