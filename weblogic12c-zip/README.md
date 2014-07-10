@@ -4,20 +4,27 @@ This is a Dockerfile for [Oracle WebLogic 12c](http://www.oracle.com/technetwork
 
 **IMPORTANT**: Oracle **does not support Docker** in any environment, including but not limited to Development, Integration, and Production environments.
 
-## Build
+## How to Build
 
 To build this Docker container for your own usage, first please download the WebLogic 12c ZIP Free Distribution for Developers and drop the downloaded file in the same folder as the Dockerfile.
 
 1. Checkout the GitHub weblogic-docker repository
-    $ git checkout git@github.com:weblogic-community/weblogic-docker.git
+
+        git checkout git@github.com:weblogic-community/weblogic-docker.git
+
 2. Go to the **weblogic12c-zip** folder
-    $ cd weblogic-docker/weblogic12c-zip
+
+        cd weblogic-docker/weblogic12c-zip
+
 3. Drop the downloaded WebLogic 12c ZIP Distribution file **wls1213_dev.zip** in this folder
-4. Execute **build.sh**
 
-## Booting up WebLogic on Docker
+4. Execute the build script
 
-Along with the Dockerfile, We provide two scripts to help you run either one server (Admin Server) or two or more servers (Node Manager) to allow you to setup a cluster. Make sure you have both scripts checked-out from GitHub.
+        build.sh
+
+## Booting up Oracle WebLogic 12c on Docker
+
+Along with the Dockerfile, two scripts are also provided to help you run either one server (Admin Server) or two or more servers (Node Managers) to allow you to setup a cluster.
 
  * dockWebLogic.sh
  * dockNodeManager.sh
