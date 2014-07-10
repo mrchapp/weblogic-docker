@@ -46,7 +46,11 @@ This script will automagically start a Node Manager and add itself to the Admin 
 You can use the WebLogic Maven Plugin or the WLST (WebLogic Scripting Tool) to deploy applications to the remote servers running on Docker containers.
 
 ## Dockerfile Source
-
 All source is on the [weblogic-docker GitHub repository](https://github.com/weblogic-community/weblogic-docker).
 
 If you find any issues, please report through the [GitHub Issues page](https://github.com/weblogic-community/weblogic-docker/issues).
+
+## License
+To download and run WebLogic 12c ZIP Distribution regardless of inside or outside a Docker container, you must agree and accept the [OTN Free Developer License Terms](http://www.oracle.com/technetwork/licenses/wls-dev-license-1703567.html).
+
+For the scripts and files hosted in the GitHub [weblogic-docker](https://github.com/weblogic-community/weblogic-docker/) repository required to build the Docker image are, unless otherwise noted, released under the Common Development and Distribution License (CDDL) 1.0 and GNU Public License 2.0 licenses.
