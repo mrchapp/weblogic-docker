@@ -4,7 +4,7 @@ import os
 machine_name = os.environ['DOCKER_CONTAINER_NAME']
 listen_address = socket.gethostbyname(socket.gethostname())
 
-connect('weblogic','welcome1','t3://wls12cdev:7001')
+connect('weblogic','welcome1','t3://wlsadmin:7001')
 
 edit()
 startEdit()

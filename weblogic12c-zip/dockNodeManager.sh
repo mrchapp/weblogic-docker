@@ -9,7 +9,7 @@ TIMESTAMP=`date +%s`
 CONTAINER_NAME=nodemanager${TIMESTAMP}
 CID_FILE=tmp/${CONTAINER_NAME}.cid
 
-docker run -d --name ${CONTAINER_NAME} -e DOCKER_CONTAINER_NAME=${CONTAINER_NAME} --cidfile $CID_FILE --link wls12cdev:wls12cdev oracle/weblogic12c_dev /u01/oracle/createMachine.sh > /dev/null 2>&1
+docker run -d --name ${CONTAINER_NAME} -e DOCKER_CONTAINER_NAME=${CONTAINER_NAME} --cidfile $CID_FILE --link wlsadmin:wlsadmin oracle/weblogic /u01/oracle/createMachine.sh > /dev/null 2>&1
 
 NMIP=$(docker inspect --format='{{.NetworkSettings.IPAddress}}' `cat $CID_FILE`)
 

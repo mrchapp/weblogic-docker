@@ -1,17 +1,21 @@
 #!/bin/sh
+TMP_CID_FILE=tmp/weblogic.cid
+DOCKER_IMAGE_NAME=oracle/weblogic
+DOCKER_CONTAINER_NAME=wlsadmin
+
 if [ ! -e tmp ]
 then
   mkdir tmp
 fi
 
-if [ -e "tmp/weblogic.cid" ]
+if [ -e "$TMP_CID_FILE" ]
 then
-  docker kill `cat tmp/weblogic.cid` > /dev/null 2>&1
+  docker kill `cat $TMP_CID_FILE` > /dev/null 2>&1
   if [ $? -ne 0 ]
   then
-    rm -f tmp/weblogic.cid
+    rm -f $TMP_CID_FILE
   else
-    docker rm `cat tmp/weblogic.cid`  > /dev/null 2>&1 && rm tmp/weblogic.cid
+    docker rm `cat $TMP_CID_FILE`  > /dev/null 2>&1 && rm $TMP_CID_FILE
   fi
 fi
 
@@ -20,13 +24,16 @@ then
   ATTACH_DEFAULT_PORT="-p 7001:7001"
 fi
 
-docker run -d $ATTACH_DEFAULT_PORT --cidfile tmp/weblogic.cid --name wls12cdev oracle/weblogic12c_dev /u01/oracle/wls12130/user_projects/domains/base_domain/startWebLogic.sh # > /dev/null 2>&1
+DOCKER_IMAGE_NAME=oracle/weblogic
+DOCKER_CONTAINER_NAME=wlsadmin
+
+docker run -d $ATTACH_DEFAULT_PORT --cidfile $TMP_CID_FILE --name $DOCKER_CONTAINER_NAME $DOCKER_IMAGE_NAME /u01/oracle/wls12130/user_projects/domains/base_domain/startWebLogic.sh # > /dev/null 2>&1
 
 if [ -n "${ATTACH_DEFAULT_PORT}" ]
 then
   WLS_ADMIN_IP=127.0.0.1
 else
-  WLS_ADMIN_IP=$(docker inspect --format='{{.NetworkSettings.IPAddress}}' wls12cdev)
+  WLS_ADMIN_IP=$(docker inspect --format='{{.NetworkSettings.IPAddress}}' $DOCKER_CONTAINER_NAME)
 fi
 
 echo "WebLogic starting... "

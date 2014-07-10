@@ -96,30 +96,32 @@ create('myQueueSubDeployment', 'SubDeployment')
 # Create and configure a JDBC Data Source, and sets the JDBC user.
 #=======================================================================================
 
-cd('/')
-create('myDataSource', 'JDBCSystemResource')
-cd('JDBCSystemResource/myDataSource/JdbcResource/myDataSource')
-create('myJdbcDriverParams','JDBCDriverParams')
-cd('JDBCDriverParams/NO_NAME_0')
-set('DriverName','org.apache.derby.jdbc.ClientDriver')
-set('URL','jdbc:derby://localhost:1527/db;create=true')
-set('PasswordEncrypted', 'PBPUBLIC')
-set('UseXADataSourceInterface', 'false')
-create('myProps','Properties')
-cd('Properties/NO_NAME_0')
-create('user', 'Property')
-cd('Property/user')
-cmo.setValue('PBPUBLIC')
+# IF YOU WANT TO HAVE A DEFAULT DATA SOURCE CREATED, UNCOMMENT THIS SECTION BEFORE BUILD
 
-cd('/JDBCSystemResource/myDataSource/JdbcResource/myDataSource')
-create('myJdbcDataSourceParams','JDBCDataSourceParams')
-cd('JDBCDataSourceParams/NO_NAME_0')
-set('JNDIName', java.lang.String("myDataSource_jndi"))
+# cd('/')
+# create('myDataSource', 'JDBCSystemResource')
+# cd('JDBCSystemResource/myDataSource/JdbcResource/myDataSource')
+# create('myJdbcDriverParams','JDBCDriverParams')
+# cd('JDBCDriverParams/NO_NAME_0')
+# set('DriverName','org.apache.derby.jdbc.ClientDriver')
+# set('URL','jdbc:derby://localhost:1527/db;create=true')
+# set('PasswordEncrypted', 'PBPUBLIC')
+# set('UseXADataSourceInterface', 'false')
+# create('myProps','Properties')
+# cd('Properties/NO_NAME_0')
+# create('user', 'Property')
+# cd('Property/user')
+# cmo.setValue('PBPUBLIC')
 
-cd('/JDBCSystemResource/myDataSource/JdbcResource/myDataSource')
-create('myJdbcConnectionPoolParams','JDBCConnectionPoolParams')
-cd('JDBCConnectionPoolParams/NO_NAME_0')
-set('TestTableName','SYSTABLES')
+# cd('/JDBCSystemResource/myDataSource/JdbcResource/myDataSource')
+# create('myJdbcDataSourceParams','JDBCDataSourceParams')
+# cd('JDBCDataSourceParams/NO_NAME_0')
+# set('JNDIName', java.lang.String("myDataSource_jndi"))
+
+# cd('/JDBCSystemResource/myDataSource/JdbcResource/myDataSource')
+# create('myJdbcConnectionPoolParams','JDBCConnectionPoolParams')
+# cd('JDBCConnectionPoolParams/NO_NAME_0')
+# set('TestTableName','SYSTABLES')
 
 #=======================================================================================
 # Target resources to the servers. 
@@ -128,7 +130,7 @@ set('TestTableName','SYSTABLES')
 cd('/')
 assign('JMSServer', 'myJMSServer', 'Target', 'AdminServer')
 assign('JMSSystemResource.SubDeployment', 'myJmsSystemResource.myQueueSubDeployment', 'Target', 'myJMSServer')
-assign('JDBCSystemResource', 'myDataSource', 'Target', 'AdminServer')
+# assign('JDBCSystemResource', 'myDataSource', 'Target', 'AdminServer')
 
 #=======================================================================================
 # Write the domain and close the domain template.

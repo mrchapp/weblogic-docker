@@ -55,7 +55,7 @@ WORKDIR /u01/oracle/home
 
 # Define default command to start bash. 
 # Modify if you want to start a nodemanager or the admin server by default
-CMD ["/bin/bash"]
+# CMD ["/bin/bash"]
 # CMD ["/u01/oracle/wls12130/user_projects/domains/base_domain/bin/startNodeManager.sh"]
-# CMD ["/u01/oracle/wls12130/user_projects/domains/base_domain/bin/startWebLogic.sh"]
+CMD ["/u01/oracle/wls12130/user_projects/domains/base_domain/bin/startWebLogic.sh"]
 
