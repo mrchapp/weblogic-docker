@@ -43,7 +43,7 @@ This script will automagically start a Node Manager and add itself to the Admin 
 
 ## Deploying Java EE Applications
 
-You can use the WebLogic Maven Plugin or the WLST (WebLogic Scripting Tool) to deploy applications to the remote servers running on Docker containers.
+You can use the web-based [Administration Console](http://docs.oracle.com/middleware/1213/core/ASADM/getstart.htm#ASADM10025), the [WebLogic Maven Plugin](http://docs.oracle.com/middleware/1213/wls/WLPRG/maven.htm), the [WebLogic Deployer](http://docs.oracle.com/middleware/1213/wls/DEPGD/deploy.htm), or the [WLST](http://docs.oracle.com/middleware/1213/wls/WLSTG/config_wls.htm#i1027344) (WebLogic Scripting Tool) to deploy applications to the remote servers running on Docker containers.
 
 ## Dockerfile Source
 All source is on the [weblogic-docker GitHub repository](https://github.com/weblogic-community/weblogic-docker).
