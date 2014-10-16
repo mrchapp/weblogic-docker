@@ -2,16 +2,16 @@
 
 echo "====================="
 
-if [ ! -e wls1213_dev.zip ]
+if [ ! -e wls1036_dev.zip ]
 then
-  echo "Download the WebLogic 12c ZIP Distribution and"
-  echo "drop the file wls1213_dev.zip in this folder before"
+  echo "Download the WebLogic 11gR1 ZIP Distribution and"
+  echo "drop the file wls1036_dev.zip in this folder before"
   echo "building this WLS Docker container!"
   exit 
 fi
 
-MD5="0a9152e312997a630ac122ba45581a18  wls1213_dev.zip"
-MD5_CHECK="`md5sum wls1213_dev.zip`"
+MD5="9690c184b81731b8feaa245b0060a296  wls1036_dev.zip"
+MD5_CHECK="`md5sum wls1036_dev.zip`"
 
 if [ "$MD5" != "$MD5_CHECK" ]
 then
