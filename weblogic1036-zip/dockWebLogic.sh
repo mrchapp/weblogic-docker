@@ -26,7 +26,7 @@ fi
 
 # RUN THE DOCKER COMMAND
 
-docker run -d $ATTACH_DEFAULT_PORT --cidfile $TMP_CID_FILE --name $DOCKER_CONTAINER_NAME $DOCKER_IMAGE_NAME /u01/oracle/wls12130/user_projects/domains/base_domain/startWebLogic.sh # > /dev/null 2>&1
+docker run -d $ATTACH_DEFAULT_PORT --cidfile $TMP_CID_FILE --name $DOCKER_CONTAINER_NAME $DOCKER_IMAGE_NAME /u01/oracle/wls1036/user_projects/domains/base_domain/startWebLogic.sh # > /dev/null 2>&1
 
 # EXTRACT THE IP ADDRESS
 if [ -n "${ATTACH_DEFAULT_PORT}" ]

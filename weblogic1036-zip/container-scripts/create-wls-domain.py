@@ -30,7 +30,7 @@
 # Open a domain template.
 #=======================================================================================
 
-readTemplate("/u01/oracle/wls12130/wlserver/common/templates/wls/wls.jar")
+readTemplate("/u01/oracle/wls1036/wlserver/common/templates/domains/wls.jar")
 
 #=======================================================================================
 # Configure the Administration Server and SSL port.
@@ -139,13 +139,13 @@ assign('JMSSystemResource.SubDeployment', 'myJmsSystemResource.myQueueSubDeploym
 setOption('OverwriteDomain', 'true')
 setOption('ServerStartMode','prod')
 
-cd('/')
-cd('NMProperties')
-set('ListenAddress','')
-set('NativeVersionEnabled', 'false')
+#cd('/')
+#cd('NMProperties')
+#set('ListenAddress','')
+#set('NativeVersionEnabled', 'false')
 
 
-writeDomain('/u01/oracle/wls12130/user_projects/domains/base_domain')
+writeDomain('/u01/oracle/wls1036/user_projects/domains/base_domain')
 closeTemplate()
 
 #=======================================================================================
