@@ -1,6 +1,6 @@
 # Oracle WebLogic Docker image
 
-This is a Dockerfile for [Oracle WebLogic 12c](http://www.oracle.com/technetwork/middleware/weblogic/overview/index.html). The purpose of this Docker container is to facilitate the setup of development and integration testing environments for developers.
+This is a Dockerfile for [Oracle WebLogic 11g](http://www.oracle.com/technetwork/middleware/weblogic/overview/index.html). The purpose of this Docker container is to facilitate the setup of development and integration testing environments for developers.
 
 **IMPORTANT**: Oracle **does not support Docker** in any environment, including but not limited to Development, Integration, and Production environments.
 
@@ -12,17 +12,17 @@ Follow this procedure:
 
         git checkout git@github.com:weblogic-community/weblogic-docker.git
 
-2. Go to the **weblogic12c-zip** folder
+2. Go to the **weblogic1036-zip** folder
 
-        cd weblogic-docker/weblogic12c-zip
+        cd weblogic-docker/weblogic1036-zip
 
-3. [Download](http://www.oracle.com/technetwork/middleware/weblogic/downloads/wls-for-dev-1703574.html) and drop the WebLogic 12c ZIP Distribution file **wls1213_dev.zip** in this folder
+3. [Download](http://www.oracle.com/technetwork/middleware/weblogic/downloads/wls-for-dev-1703574.html) and drop the WebLogic 11g ZIP Distribution file **wls1036_dev.zip** in this folder
 
 4. Execute the build script
 
         build.sh
 
-## Booting up Oracle WebLogic 12c on Docker
+## Booting up Oracle WebLogic 11g on Docker
 
 Along with the Dockerfile, two scripts are also provided to help you run either one server (Admin Server) or two or more servers (Node Managers) to allow you to setup a cluster.
 
@@ -51,6 +51,6 @@ All source is on the [weblogic-docker GitHub repository](https://github.com/webl
 If you find any issues, please report through the [GitHub Issues page](https://github.com/weblogic-community/weblogic-docker/issues).
 
 ## License
-To download and run WebLogic 12c ZIP Distribution regardless of inside or outside a Docker container, you must agree and accept the [OTN Free Developer License Terms](http://www.oracle.com/technetwork/licenses/wls-dev-license-1703567.html).
+To download and run WebLogic 11g ZIP Distribution regardless of inside or outside a Docker container, you must agree and accept the [OTN Free Developer License Terms](http://www.oracle.com/technetwork/licenses/wls-dev-license-1703567.html).
 
 For the scripts and files hosted in the GitHub [weblogic-docker](https://github.com/weblogic-community/weblogic-docker/) repository required to build the Docker image are, unless otherwise noted, released under the Common Development and Distribution License (CDDL) 1.0 and GNU Public License 2.0 licenses.
